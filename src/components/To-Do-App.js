@@ -24,12 +24,6 @@ export class ToDoApp extends Component {
             // {id:3,done:false,description:"This is  dto do"}
         ]
     }
-    componentDidMount=()=>{
-        if(this.state.toDoArray.length===0){
-            
-        }
-    }
-
     saveAllStates=()=>{
         localStorage.setItem('appState', JSON.stringify(this.state));
     }
@@ -111,17 +105,32 @@ export class ToDoApp extends Component {
     }
 
     render() {
-        return (
-            <div>
+        if(this.state.toDoArray.length===0){
+            return(
+                <div>
                 <Card>
-                    <Card.Body className="mainCard">
-                        <ToDoHeader allDone={this.markAllDone} clearAll={this.clearCompleted}/>
-                        <ToDoList data={this.state.toDoArray} markDone={this.markDone} delete={this.deleteToDo}/>
+                    <Card.Body>
+                        <h3>No Pending Tasks</h3>
                     </Card.Body>
                 </Card>
                 <ToDoInput add={this.addToDo}/>
             </div>
-        )
+            )
+            
+        }
+        else{
+            return (
+                <div>
+                    <Card>
+                        <Card.Body className="mainCard">
+                            <ToDoHeader allDone={this.markAllDone} clearAll={this.clearCompleted}/>
+                            <ToDoList data={this.state.toDoArray} markDone={this.markDone} delete={this.deleteToDo}/>
+                        </Card.Body>
+                    </Card>
+                    <ToDoInput add={this.addToDo}/>
+                </div>
+            )
+        }
     }
 }
 

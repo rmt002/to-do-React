@@ -10,7 +10,8 @@ export class ToDoHeader extends Component {
             <div>
                 <Card>
                     <Card.Body>
-                        <Nav className="justify-content-end" activeKey="/home">
+                        <h3 className="titlecard">Your Tasks</h3>
+                        <Nav className="justify-content-end deleteConfirm" activeKey="/home">
                             <Nav.Item>
                                 <Nav.Link >
                                     <OverlayTrigger placement='top' overlay={<Tooltip>Mark All Completed</Tooltip>}>

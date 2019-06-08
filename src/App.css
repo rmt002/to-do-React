@@ -64,3 +64,8 @@
 .mainCard{
   padding-bottom: 100px;
 }
+
+.titlecard{
+  width: 50%;
+  display: inline-block;
+}
