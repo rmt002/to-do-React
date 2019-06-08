@@ -19,7 +19,7 @@
   padding-right:40px !important;
   position: fixed;
   width: 100%;
-  position: absolute;
+  
   right: 0px;
 }
 .add{
@@ -59,4 +59,8 @@
 
 .trash{
   font-size: 35px;
+}
+
+.mainCard{
+  padding-bottom: 100px;
 }

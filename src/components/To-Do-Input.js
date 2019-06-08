@@ -22,6 +22,8 @@ export class ToDoInput extends Component {
         }
     }
 
+
+
     render() {
         if (this.state.collapse > 0) {
             return (
@@ -32,6 +34,11 @@ export class ToDoInput extends Component {
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
                             id="composer"
+                            onKeyDown={(event)=>{
+                                if(event.key==='Enter'){
+                                    this.submitToDo()
+                                }
+                            }}
                         />
                         <InputGroup.Append>
                             <button className="btn btn-primary" onClick={this.submitToDo} type="submit">

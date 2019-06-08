@@ -5,8 +5,7 @@ import Card from '../../node_modules/react-bootstrap/Card';
 import ToDoInput from './To-Do-Input';
 
 const InitialState={
-    toDoArray:[],
-    max:1
+    toDoArray:[]
 }
 
 //localStorage.getItem("appState")?JSON.parse(localStorage.getItem("appState")) :
@@ -15,7 +14,6 @@ export class ToDoApp extends Component {
     constructor(props){
         super();
         this.state=localStorage.getItem("appState")?JSON.parse(localStorage.getItem("appState")) : InitialState;
-        console.log(this.state,InitialState)
        
     }
 
@@ -25,6 +23,11 @@ export class ToDoApp extends Component {
             // {id:2,done:false,description:"This is  to do"},
             // {id:3,done:false,description:"This is  dto do"}
         ]
+    }
+    componentDidMount=()=>{
+        if(this.state.toDoArray.length===0){
+            
+        }
     }
 
     saveAllStates=()=>{
@@ -39,10 +42,8 @@ export class ToDoApp extends Component {
             description:data,
             done:false
         })
-        console.log(oldData)
         this.setState({
             toDoArray:oldData,
-            max:this.state.max+1
         })
         this.saveAllStates()
     }
@@ -99,21 +100,21 @@ export class ToDoApp extends Component {
     }
 
     findMaxID=()=>{
-        let max=this.state.max
-        if(max==null){
-            max=1
-            this.setState({
-                max:1
-            })
-        }
-        return max+1;
+        let oldData=this.state.toDoArray;
+        let max=1
+        oldData.forEach((index)=>{
+            if(index.id>=max){
+                max=index.id+1
+            }
+        })
+        return max;
     }
 
     render() {
         return (
             <div>
                 <Card>
-                    <Card.Body>
+                    <Card.Body className="mainCard">
                         <ToDoHeader allDone={this.markAllDone} clearAll={this.clearCompleted}/>
                         <ToDoList data={this.state.toDoArray} markDone={this.markDone} delete={this.deleteToDo}/>
                     </Card.Body>
