@@ -1,25 +1,38 @@
 import React,{ Component } from 'react';
+import Tooltip from 'react-bootstrap/Tooltip'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 export class ToDoEntry extends Component{
     constructor(props){
         super();
         this.mounted=false;
     }
+
+    state={
+        deleteElement:[],
+    }
+    
+    componentWillMount=()=>{
+        this.mounted=true
+    }
+    
+    componentWillUnmount=()=>{
+        this.mounted=false
+    }
+
     markAsDonehandler=(event)=>{
         this.props.markDone(event.target.checked,this.props.data.id)
     }
 
-    componentWillMount=()=>{
-        this.mounted=true
-    }
-    componentWillUnmount=()=>{
-        this.mounted=false
-    }
     confirmDelete=()=>
     {
         let newElement=[];
         newElement.push(
-            <span key={10}className="deleteConfirm"><i className="material-icons" onClick={this.handleDelete}>delete</i></span>
+            <span key={10}className="deleteConfirm">
+                <OverlayTrigger placement='top' overlay={<Tooltip>Delete Task</Tooltip>}>
+                    <i className="material-icons trash" onClick={this.handleDelete}>delete</i>
+                </OverlayTrigger>
+            </span>
         )
         this.setState({
             deleteElement:newElement
@@ -31,21 +44,18 @@ export class ToDoEntry extends Component{
             })
         },2000)
     }
+    
     handleDelete=()=>{
-        alert("delete "+this.props.data.id)
         this.props.delete(this.props.data.id)
     }
-    state={
-        deleteElement:[],
-    }
+
+
     render(){
-        console.log(this.state.deleteElement)
         return(
             <div onClick={this.confirmDelete} >
                 <input type="checkbox" checked={this.props.data.done} onChange={this.markAsDonehandler} className="checkbx"></input>
                 <span className="tododata" style={{
                     textDecoration:this.props.data.done?'line-through':'none',
-                    backgroundColor:(this.state.deleteElement[0])?'red':'white'
                     }}>{this.props.data.description}</span>
                 {this.state.deleteElement}
             </div> 

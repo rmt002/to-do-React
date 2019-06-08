@@ -14,42 +14,7 @@ export class ToDoApp extends Component {
             {id:1,done:false,description:"This is a test to do"},
             {id:2,done:false,description:"This is  to do"},
             {id:3,done:false,description:"This is  dto do"}
-        ],
-        maxID:0
-    }
-
-    findMaxID=()=>{
-        let max=0;
-        if(this.state.toDoArray!==undefined){
-            this.state.toDoArray.forEach((index)=>{
-                if(index.id>this.state.toDoArray[max].id){
-                    max=index.id;
-                }
-            })
-        }
-        return max;
-    }
-
-    clearCompleted=()=>{
-        let oldData=this.state.toDoArray;
-        oldData.forEach((index)=>{
-            if(index.done){
-                oldData.splice(index,1)
-            }
-        })
-        this.setState({
-            toDoArray:oldData
-        })
-    }
-
-    markAllDone=()=>{
-        let oldData=this.state.toDoArray;
-        oldData.forEach((index)=>{
-            index.done=true
-        })
-        this.setState({
-            toDoArray:oldData
-        })
+        ]
     }
 
     addToDo=(data)=>{
@@ -88,6 +53,40 @@ export class ToDoApp extends Component {
         this.setState({
             toDoArray:oldData
         })
+    }
+
+    clearCompleted=()=>{
+        let oldData=this.state.toDoArray;
+        oldData.forEach((index)=>{
+            if(index.done){
+                oldData.splice(index,1)
+            }
+        })
+        this.setState({
+            toDoArray:oldData
+        })
+    }
+
+    markAllDone=()=>{
+        let oldData=this.state.toDoArray;
+        oldData.forEach((index)=>{
+            index.done=true
+        })
+        this.setState({
+            toDoArray:oldData
+        })
+    }
+
+    findMaxID=()=>{
+        let max=0;
+        if(this.state.toDoArray!==undefined){
+            this.state.toDoArray.forEach((index)=>{
+                if(index.id>this.state.toDoArray[max].id){
+                    max=index.id;
+                }
+            })
+        }
+        return max;
     }
 
     render() {

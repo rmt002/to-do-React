@@ -3,10 +3,6 @@
   margin:40px 20px 20px 20px;
 }
 
-.accordion{
-  width: 100% !important;
-}
-
 .header{
   padding: 10px 0px 10px 10px;
   background-color:#007bff;
@@ -59,4 +55,8 @@
 
 .deleteConfirm{
   float: right;
+}
+
+.trash{
+  font-size: 35px;
 }

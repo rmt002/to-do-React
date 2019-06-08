@@ -10,20 +10,18 @@ export class ToDoInput extends Component {
         super();
     }
 
-    submitToDo = (event) => {
-        const description = document.getElementById('composer').value;
-        if (description !== "" && description != null) {
-            this.props.add(description)
-            // this.props.add(description)
-        }
-    }
-
     state = {
         collapse: -1
     }
 
-    render() {
+    submitToDo = (event) => {
+        const description = document.getElementById('composer').value;
+        if (description !== "" && description != null) {
+            this.props.add(description)
+        }
+    }
 
+    render() {
         if (this.state.collapse > 0) {
             return (
                 <div className="compose_box">
@@ -62,11 +60,9 @@ export class ToDoInput extends Component {
                             </i>
                         </button>
                     </OverlayTrigger>
-
                 </div>
             )
         }
-
     }
 }
 
