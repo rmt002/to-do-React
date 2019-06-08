@@ -71,15 +71,14 @@ export class ToDoApp extends Component {
 
     clearCompleted=()=>{
         let oldData=this.state.toDoArray;
-        for(var i=0;i<5;i++){
-            oldData.forEach((index)=>{
-                if(index.done){
-                    oldData.splice(index,1)
-                }
-            })
+        let newData=[]
+        for (var i=0;i<oldData.length;i++){
+            if(oldData[i].done!==true){
+                newData.push(oldData[i])
+            }
         }
         this.setState({
-            toDoArray:oldData
+            toDoArray:newData
         })
         this.saveAllStates()
     }
