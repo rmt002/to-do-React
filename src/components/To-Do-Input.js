@@ -24,14 +24,14 @@ export class ToDoInput extends Component {
                         />
                         <InputGroup.Append>
                             <button className="btn btn-primary" type="submit">
-                                <i class="material-icons pencil saveNote">
+                                <i className="material-icons pencil saveNote">
                                     save
                                 </i>
                             </button>
                         </InputGroup.Append>
                         <InputGroup.Append>
                             <button className="btn btn-danger add" onClick={() => { this.setState({ collapse: -1 }) }}>
-                                <i class="material-icons pencil">
+                                <i className="material-icons pencil">
                                     cancel
                                 </i>
                             </button>
@@ -44,7 +44,7 @@ export class ToDoInput extends Component {
             return (
                 <div className="compose_box">
                     <button className="btn btn-primary add" onClick={() => { this.setState({ collapse: 1 }) }}>
-                        <i class="material-icons pencil">
+                        <i className="material-icons pencil">
                         edit
                         </i>
                     </button>

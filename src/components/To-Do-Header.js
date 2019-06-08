@@ -12,10 +12,10 @@ export class ToDoHeader extends Component {
                    
                         
                         <Nav.Item>
-                        <Nav.Link ><button className="btn btn-light"><i class="material-icons">done_all</i></button></Nav.Link>
+                        <Nav.Link ><button className="btn btn-light"><i className="material-icons">done_all</i></button></Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link><button className="btn btn-danger"><i class="material-icons">delete</i></button></Nav.Link>
+                        <Nav.Link><button className="btn btn-danger"><i className="material-icons">delete</i></button></Nav.Link>
                     </Nav.Item>
                         
                     
