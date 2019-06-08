@@ -7,11 +7,20 @@ export class ToDoInput extends Component {
         super();
     }
 
+    submitToDo=(event)=>{
+        const description=document.getElementById('composer').value;
+        if(description!=="" && description!=null){
+            this.props.add(description)
+            // this.props.add(description)
+        }
+    }
+
     state = {
         collapse: -1
     }
 
     render() {
+        
         if (this.state.collapse > 0) {
             return (
                 <div className="compose_box">
@@ -23,7 +32,7 @@ export class ToDoInput extends Component {
                             id="composer"
                         />
                         <InputGroup.Append>
-                            <button className="btn btn-primary" type="submit">
+                            <button className="btn btn-primary" onClick={this.submitToDo} type="submit">
                                 <i className="material-icons pencil saveNote">
                                     save
                                 </i>

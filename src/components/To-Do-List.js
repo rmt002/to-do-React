@@ -15,7 +15,6 @@ export class ToDoList extends Component {
                 </ListGroup.Item>)
         }
         return (
-            
             <div>
                 <Card style={{ width: '100%' }}>
                     <ListGroup variant="flush">
