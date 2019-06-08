@@ -23,16 +23,23 @@ export class ToDoApp extends Component {
         if(this.state.toDoArray!==undefined){
             this.state.toDoArray.forEach((index)=>{
                 if(index.id>this.state.toDoArray[max].id){
-                    console.log(index.id)
                     max=index.id;
                 }
             })
         }
-        console.log(max)
         return max;
     }
-    clearCompleted=()=>{
 
+    clearCompleted=()=>{
+        let oldData=this.state.toDoArray;
+        oldData.forEach((index)=>{
+            if(index.done){
+                oldData.splice(index,1)
+            }
+        })
+        this.setState({
+            toDoArray:oldData
+        })
     }
 
     markAllDone=()=>{
@@ -76,8 +83,8 @@ export class ToDoApp extends Component {
             <div>
                 <Card>
                     <Card.Body>
-                        <ToDoHeader allDone={this.markAllDone} />
-                        <ToDoList data={this.state.toDoArray} markDone={this.markDone}/>
+                        <ToDoHeader allDone={this.markAllDone} clearAll={this.clearCompleted}/>
+                        <ToDoList data={this.state.toDoArray} markDone={this.markDone} />
                     </Card.Body>
                 </Card>
                 <ToDoInput add={this.addToDo}/>
