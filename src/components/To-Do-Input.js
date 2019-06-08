@@ -16,6 +16,7 @@ export class ToDoInput extends Component {
 
     submitToDo = (event) => {
         const description = document.getElementById('composer').value;
+        document.getElementById('composer').value="";
         if (description !== "" && description != null) {
             this.props.add(description)
         }

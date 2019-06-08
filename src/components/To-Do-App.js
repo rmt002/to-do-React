@@ -4,30 +4,47 @@ import ToDoList from './To-Do-List';
 import Card from '../../node_modules/react-bootstrap/Card';
 import ToDoInput from './To-Do-Input';
 
+const InitialState={
+    toDoArray:[],
+    max:1
+}
+
+//localStorage.getItem("appState")?JSON.parse(localStorage.getItem("appState")) :
+
 export class ToDoApp extends Component {
     constructor(props){
         super();
+        this.state=localStorage.getItem("appState")?JSON.parse(localStorage.getItem("appState")) : InitialState;
+        console.log(this.state,InitialState)
+       
     }
 
     state={
         toDoArray:[
-            {id:1,done:false,description:"This is a test to do"},
-            {id:2,done:false,description:"This is  to do"},
-            {id:3,done:false,description:"This is  dto do"}
+            // {id:1,done:false,description:"This is a test to do"},
+            // {id:2,done:false,description:"This is  to do"},
+            // {id:3,done:false,description:"This is  dto do"}
         ]
+    }
+
+    saveAllStates=()=>{
+        localStorage.setItem('appState', JSON.stringify(this.state));
     }
 
     addToDo=(data)=>{
         const maxID=this.findMaxID();
         let oldData=this.state.toDoArray;
         oldData.push({
-            id:maxID+2,
+            id:(maxID),
             description:data,
             done:false
         })
+        console.log(oldData)
         this.setState({
-            toDoArray:oldData
+            toDoArray:oldData,
+            max:this.state.max+1
         })
+        this.saveAllStates()
     }
 
     deleteToDo=(id)=>{
@@ -40,6 +57,7 @@ export class ToDoApp extends Component {
         this.setState({
             toDoArray:oldData
         })
+        this.saveAllStates()
     }
 
     markDone=(status,completedID)=>{
@@ -53,6 +71,7 @@ export class ToDoApp extends Component {
         this.setState({
             toDoArray:oldData
         })
+        this.saveAllStates()
     }
 
     clearCompleted=()=>{
@@ -65,6 +84,7 @@ export class ToDoApp extends Component {
         this.setState({
             toDoArray:oldData
         })
+        this.saveAllStates()
     }
 
     markAllDone=()=>{
@@ -75,18 +95,18 @@ export class ToDoApp extends Component {
         this.setState({
             toDoArray:oldData
         })
+        this.saveAllStates()
     }
 
     findMaxID=()=>{
-        let max=0;
-        if(this.state.toDoArray!==undefined){
-            this.state.toDoArray.forEach((index)=>{
-                if(index.id>this.state.toDoArray[max].id){
-                    max=index.id;
-                }
+        let max=this.state.max
+        if(max==null){
+            max=1
+            this.setState({
+                max:1
             })
         }
-        return max;
+        return max+1;
     }
 
     render() {
