@@ -30,7 +30,7 @@ export class ToDoInput extends Component {
                 <div className="compose_box">
                     <InputGroup className="mb-3  justify-content-center">
                         <FormControl
-                            placeholder="What do you need to get done?"
+                            placeholder="Enter Task..."
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
                             id="composer"
