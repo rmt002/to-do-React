@@ -6,13 +6,10 @@ export class ToDoHeader extends Component {
             <div>
                 <Nav className="justify-content-end" activeKey="/home">
                     <Nav.Item>
-                        <Nav.Link><button className="btn btn-primary">Add New Task</button></Nav.Link>
+                        <Nav.Link ><button className="btn btn-light"><i class="material-icons">done_all</i></button></Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link ><button className="btn btn-secondary">Mark All Complete</button></Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link><button className="btn btn-danger">Clear All Completed</button></Nav.Link>
+                        <Nav.Link><button className="btn btn-danger"><i class="material-icons">delete</i></button></Nav.Link>
                     </Nav.Item>
                 </Nav>
             </div>

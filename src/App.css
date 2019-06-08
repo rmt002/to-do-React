@@ -9,6 +9,38 @@
 
 .header{
   padding: 10px 0px 10px 10px;
-  background-color: rgb(90, 148, 223);
+  background-color:#007bff;
+  /* background-color: rgb(90, 148, 223); */
   color: white
+}
+
+.compose_box {
+  width: 100%;
+  justify-content: flex-end;
+  bottom: 2px;
+  align-items: center;
+  padding: 20px 40px 20px 10px;
+  padding-right:40px !important;
+  position: fixed;
+}
+.add{
+  font-size: 40px;
+  float: right;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.pencil{
+  font-size: 35px;
+  
+}
+
+.saveNote{
+  width: 60px;
+}
+
+#composer{
+  height: 70px;
+  border-radius: 20px 0px 0px 20px;
 }
