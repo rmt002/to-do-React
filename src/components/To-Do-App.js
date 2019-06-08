@@ -36,6 +36,13 @@ export class ToDoApp extends Component {
     }
 
     markAllDone=()=>{
+        let oldData=this.state.toDoArray;
+        oldData.forEach((index)=>{
+            index.done=true
+        })
+        this.setState({
+            toDoArray:oldData
+        })
     }
 
     addToDo=(data)=>{
@@ -69,7 +76,7 @@ export class ToDoApp extends Component {
             <div>
                 <Card>
                     <Card.Body>
-                        <ToDoHeader />
+                        <ToDoHeader allDone={this.markAllDone} />
                         <ToDoList data={this.state.toDoArray} markDone={this.markDone}/>
                     </Card.Body>
                 </Card>
