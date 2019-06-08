@@ -10,8 +10,8 @@ export class ToDoList extends Component {
     render() {
         var elements=[]
         for(var i=0;i<this.props.data.length;i++){
-            elements.push(<ListGroup.Item key={this.props.data[i].id}>
-                <ToDoEntry key={this.props.data[i].id} data={this.props.data[i]} markDone={this.props.markDone}/>
+            elements.push(<ListGroup.Item action key={this.props.data[i].id}>
+                <ToDoEntry key={this.props.data[i].id} data={this.props.data[i]} markDone={this.props.markDone} delete={this.props.delete}/>
                 </ListGroup.Item>)
         }
         return (

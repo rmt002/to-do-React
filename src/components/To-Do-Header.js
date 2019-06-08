@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Nav from '../../node_modules/react-bootstrap/Nav';
 import Card from '../../node_modules/react-bootstrap/Card';
+import Tooltip from 'react-bootstrap/Tooltip'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 export class ToDoHeader extends Component {
     render() {
@@ -10,10 +12,18 @@ export class ToDoHeader extends Component {
                     <Card.Body>
                         <Nav className="justify-content-end" activeKey="/home">
                             <Nav.Item>
-                                <Nav.Link ><button className="btn btn-light" onClick={this.props.allDone}><i className="material-icons">done_all</i></button></Nav.Link>
+                                <Nav.Link >
+                                    <OverlayTrigger placement='top' overlay={<Tooltip>Mark All Completed</Tooltip>}>
+                                        <button className="btn btn-light" onClick={this.props.allDone}><i className="material-icons">done_all</i></button>
+                                    </OverlayTrigger>
+                                </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link><button className="btn btn-danger" onClick={this.props.clearAll}><i className="material-icons">delete</i></button></Nav.Link>
+                                <Nav.Link >
+                                    <OverlayTrigger placement='top' overlay={<Tooltip>Delete Completed</Tooltip>}>
+                                    <button className="btn btn-danger" onClick={this.props.clearAll}><i className="material-icons">delete</i></button>
+                                    </OverlayTrigger>
+                                </Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Card.Body>
@@ -24,3 +34,5 @@ export class ToDoHeader extends Component {
 }
 
 export default ToDoHeader
+
+

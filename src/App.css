@@ -56,3 +56,7 @@
 .tododata{
   margin-left: 20px;
 }
+
+.deleteConfirm{
+  float: right;
+}

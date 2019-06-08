@@ -65,6 +65,18 @@ export class ToDoApp extends Component {
         })
     }
 
+    deleteToDo=(id)=>{
+        let oldData=this.state.toDoArray;
+        oldData.forEach((index)=>{
+            if(index.id===id){
+                oldData.splice(index,1)
+            }
+        })
+        this.setState({
+            toDoArray:oldData
+        })
+    }
+
     markDone=(status,completedID)=>{
         let oldData=this.state.toDoArray;
         let index=oldData.findIndex(data=>data.id===completedID);
@@ -84,7 +96,7 @@ export class ToDoApp extends Component {
                 <Card>
                     <Card.Body>
                         <ToDoHeader allDone={this.markAllDone} clearAll={this.clearCompleted}/>
-                        <ToDoList data={this.state.toDoArray} markDone={this.markDone} />
+                        <ToDoList data={this.state.toDoArray} markDone={this.markDone} delete={this.deleteToDo}/>
                     </Card.Body>
                 </Card>
                 <ToDoInput add={this.addToDo}/>

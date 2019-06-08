@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
+import Tooltip from 'react-bootstrap/Tooltip'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+
 
 export class ToDoInput extends Component {
     constructor(props) {
         super();
     }
 
-    submitToDo=(event)=>{
-        const description=document.getElementById('composer').value;
-        if(description!=="" && description!=null){
+    submitToDo = (event) => {
+        const description = document.getElementById('composer').value;
+        if (description !== "" && description != null) {
             this.props.add(description)
             // this.props.add(description)
         }
@@ -20,7 +23,7 @@ export class ToDoInput extends Component {
     }
 
     render() {
-        
+
         if (this.state.collapse > 0) {
             return (
                 <div className="compose_box">
@@ -52,11 +55,14 @@ export class ToDoInput extends Component {
         else {
             return (
                 <div className="compose_box">
-                    <button className="btn btn-primary add" onClick={() => { this.setState({ collapse: 1 }) }}>
-                        <i className="material-icons pencil">
-                        edit
-                        </i>
-                    </button>
+                    <OverlayTrigger placement='top' overlay={<Tooltip>Add New Task</Tooltip>}>
+                        <button className="btn btn-primary add" onClick={() => { this.setState({ collapse: 1 }) }}>
+                            <i className="material-icons pencil">
+                                edit
+                            </i>
+                        </button>
+                    </OverlayTrigger>
+
                 </div>
             )
         }
