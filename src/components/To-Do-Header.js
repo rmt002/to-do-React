@@ -15,14 +15,14 @@ export class ToDoHeader extends Component {
                             <Nav.Item>
                                 <Nav.Link >
                                     <OverlayTrigger placement='top' overlay={<Tooltip>Mark All Completed</Tooltip>}>
-                                        <button className="btn btn-light" onClick={this.props.allDone}><i className="material-icons">done_all</i></button>
+                                        <button className="btn btn-light" onClick={this.props.allDone}><i className="material-icons ico">done_all</i></button>
                                     </OverlayTrigger>
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link >
                                     <OverlayTrigger placement='top' overlay={<Tooltip>Delete Completed</Tooltip>}>
-                                    <button className="btn btn-danger" onClick={this.props.clearAll}><i className="material-icons">delete</i></button>
+                                    <button className="btn btn-danger" onClick={this.props.clearAll}><i className="material-icons ico">delete</i></button>
                                     </OverlayTrigger>
                                 </Nav.Link>
                             </Nav.Item>
